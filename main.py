@@ -1,11 +1,14 @@
 #capture which user made which command, and the results that came from that command
 #datetime_date, datetime_time, user, command_type, values_returned
 
-
+#import libraries
 import discordbot_secrets
 import discord
 from discord.ext import commands
+import random
+import moisture
 
+#define botkey
 bot_login = discordbot_secrets.DISCORDKEY
 
 description = '''An example bot to showcase the discord.ext.commands extension
@@ -19,8 +22,6 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix='!', description=description, intents=intents)
 
-
-
 @bot.event
 async def on_ready():
     print(f'Plantbot is alive as {bot.user}!')
@@ -33,5 +34,8 @@ async def on_message(message):
 
     if message.content.startswith('!hello'):
         await message.channel.send(f'Hello {message.author}!')
+    
+    if message.content.startswith('!roll'):
+        await message.channel.send(f'Rolled for {int(random(0,100))}')
 
 bot.run(bot_login)
