@@ -18,9 +18,11 @@ def grab_moisture():
         moistures = []
         capture = m1_sensor.moisture
         moistures.append(capture)
+        print(moistures)
         sleep(.5)
     
     avg_moisture = sum(moistures) / len(moistures)
+    print(avg_moisture)
     return(avg_moisture)
 
 if __name__ == "__main__":
