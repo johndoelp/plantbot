@@ -36,6 +36,9 @@ async def on_message(message):
         await message.channel.send(f'Hello {message.author}!')
     
     if message.content.startswith('!roll'):
-        await message.channel.send(f'Rolled for {int(random(0,100))}')
+        await message.channel.send(f'Rolled for {int(random(0,100))}.')
+    
+    if message.content.startswith('!moisture'):
+        await message.channel.send(f'Plant\'s current moisture is {moisture.grab_moisture()}.')
 
 bot.run(bot_login)
