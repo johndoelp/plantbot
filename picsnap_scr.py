@@ -9,7 +9,7 @@ def pic_capture():
 
     img_array = camera.capture_array()
 
-    image = Image.fromarrray(img_array)
+    image = Image.fromarray(img_array)
 
     img_mem = io.BytesIO()
     image.save(img_mem, format = "JPEG")

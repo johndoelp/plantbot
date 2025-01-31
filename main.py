@@ -51,6 +51,8 @@ async def moisture(ctx):
 @bot.command(description='Takes a picture and sends it to chat.')
 async def pic(ctx):
     if ctx.channel.id == bot_channel:
-        await ctx.channel.send(discord.File(picsnap_scr.pic_capture(), filename = "plantsnap.jpg"))
+        captured_img = picsnap_scr.pic_capture()
+        plantpic = discord.File(captured_img, filename = "plantpic.jpg")
+        await ctx.channel.send(file=plantpic)
 
 bot.run(bot_login)
