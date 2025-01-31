@@ -7,6 +7,7 @@ import discord
 from discord.ext import commands
 import random
 import moisture_scr
+import picsnap_scr
 
 #define botkey, listening channel
 bot_login = discordbot_secrets.DISCORDKEY
@@ -40,11 +41,16 @@ async def hello(ctx):
 @bot.command(description='Rolls for a number between 0 - 100.')
 async def roll(ctx):
     if ctx.channel.id == bot_channel:
-        await ctx.channel.send(f'Rolled for {int(random(0,100))}.')
+        await ctx.channel.send(f'Rolled for {random.randint(0,100)}.')
 
 @bot.command(description='Captures current moisture data for the plant.')
-async def moisture_scr(ctx):
+async def moisture(ctx):
     if ctx.channel.id == bot_channel:
         await ctx.channel.send(f'Plant\'s current moisture is {moisture_scr.grab_moisture()}.')
+
+@bot.command(description='Takes a picture and sends it to chat.')
+async def pic(ctx):
+    if ctx.channel.id == bot_channel:
+        await ctx.channel.send(discord.File(picsnap_scr.pic_capture(), filename = "plantsnap.jpg"))
 
 bot.run(bot_login)
