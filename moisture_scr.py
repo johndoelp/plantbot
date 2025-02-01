@@ -2,13 +2,12 @@
 #this function then passes the value back to the main function for the bot to message in chat
 
 from grow.moisture import Moisture
-from time import sleep
 
 def grab_moisture():
     #create list of moisture readings to avg
-    m1_sensor = Moisture(1)
     moistures = []
     for i in range(10):
+        m1_sensor = Moisture(1)
         capture = m1_sensor.moisture
         moistures.append(capture)
         print(moistures)
