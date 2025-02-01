@@ -18,7 +18,7 @@ camera.start()
 
 #define botkey, listening channel
 bot_login = discordbot_secrets.DISCORDKEY
-bot_channel = 1332750253958500414
+bot_channel = discordbot_secrets.CHANNELKEY
 
 description = '''Plantbot: a Dicord bot run on a Raspberry Pi that detects
 the moisture of a plant, waters the plant, takes a picture of the plant...
