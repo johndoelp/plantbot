@@ -17,5 +17,6 @@ def pic_capture():
     img_mem.seek(0)
 
     camera.stop()
+    del camera
 
     return img_mem
