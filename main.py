@@ -20,10 +20,10 @@ camera.start()
 bot_login = discordbot_secrets.DISCORDKEY
 bot_channel = 1332750253958500414
 
-description = '''An example bot to showcase the discord.ext.commands extension
-module.
+description = '''Plantbot: a Dicord bot run on a Raspberry Pi that detects
+the moisture of a plant, waters the plant, takes a picture of the plant...
 
-There are a number of utility commands being showcased here.'''
+Run by commands in a Discord server.'''
 
 intents = discord.Intents.default()
 intents.members = True

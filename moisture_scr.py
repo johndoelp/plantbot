@@ -4,25 +4,16 @@
 from grow.moisture import Moisture
 from time import sleep
 
+m1_sensor = Moisture(1)
 def grab_moisture():
-    m1 = 0
-    capture = 0
-    m1_sensor = Moisture(1)
-
-    while m1 == 0:
-        m1 = m1_sensor.moisture
-
     #create list of moisture readings to avg
     moistures = []
     for i in range(10):
         capture = m1_sensor.moisture
         moistures.append(capture)
         print(moistures)
-        sleep(.1)
+        sleep(0.1)
     
     avg_moisture = round(sum(moistures) / len(moistures), 2)
     print(f'Average moisture is {avg_moisture}.')
     return(avg_moisture)
-
-if __name__ == "__main__":
-    grab_moisture()
