@@ -6,8 +6,9 @@ from grow.moisture import Moisture
 def grab_moisture():
     #create list of moisture readings to avg
     moistures = []
+    m1_sensor = Moisture(1)
     for i in range(10):
-        m1_sensor = Moisture(1)
+        
         capture = m1_sensor.moisture
         moistures.append(capture)
         print(moistures)

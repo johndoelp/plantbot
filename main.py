@@ -58,6 +58,21 @@ async def moisture(ctx):
         print(f'Moisture called by {ctx.author}.')
         await ctx.channel.send(f'Plant\'s current moisture is {moisture_scr.grab_moisture()}.')
 
+@bot.command(description='Captures current moisture data for the plant.')
+async def status(ctx):
+    if ctx.channel.id == bot_channel:
+        print(f'Status called by {ctx.author}.')
+        img_array = camera.capture_array()
+        image = Image.fromarray(img_array)
+        img_mem = io.BytesIO()
+        image.save(img_mem, format = "JPEG")
+        img_mem.seek(0)
+
+        plantpic = discord.File(img_mem, filename = "plantpic.jpg")
+        temperature = "TBD"
+        print(f'Pic called by {ctx.author}.')
+        await ctx.channel.send(content=f'Plant\'s current moisture is {moisture_scr.grab_moisture()}, and the temp is {temperature}.', file=plantpic)
+
 @bot.command(description='Takes a picture and sends it to chat.')
 async def pic(ctx):
     if ctx.channel.id == bot_channel:
