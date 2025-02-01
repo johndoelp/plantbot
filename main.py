@@ -7,7 +7,14 @@ import discord
 from discord.ext import commands
 import random
 import moisture_scr
-import picsnap_scr
+
+#camera setup
+from picamera2 import Picamera2
+from PIL import Image
+import io
+camera = Picamera2()
+camera.configure(camera.create_still_configuration())
+camera.start()
 
 #define botkey, listening channel
 bot_login = discordbot_secrets.DISCORDKEY
@@ -54,8 +61,13 @@ async def moisture(ctx):
 @bot.command(description='Takes a picture and sends it to chat.')
 async def pic(ctx):
     if ctx.channel.id == bot_channel:
-        captured_img = picsnap_scr.pic_capture()
-        plantpic = discord.File(captured_img, filename = "plantpic.jpg")
+        img_array = camera.capture_array()
+        image = Image.fromarray(img_array)
+        img_mem = io.BytesIO()
+        image.save(img_mem, format = "JPEG")
+        img_mem.seek(0)
+
+        plantpic = discord.File(img_mem, filename = "plantpic.jpg")
         print(f'Pic called by {ctx.author}.')
         await ctx.channel.send(file=plantpic)
 
