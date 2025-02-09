@@ -13,7 +13,7 @@ The bot listens for commands in a certain channel of the Discord server. It's ru
 - `!enviro` - sends a temperature reading of the room to the channel from the BME680
 - `!moisture` - collects a moisture reading and sends it to the channel
 - `!water` - activates water pump that waters the plant for a set amount of time (will not activate if the moisture is above a value, to prevent overwatering)
-- `!status` - sends a picture and the environmental conditions & the moisture of the soil in a chat message
+- `!status` - sends a picture, environmental conditions, and moisture of the soil in a single chat message
 
 ## **Required Packages & Libraries:**
 For plantbot to live, it will need the following packages installed:
